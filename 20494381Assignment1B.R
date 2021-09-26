@@ -238,8 +238,8 @@ df <- read.csv(file="apple_review_new.csv", header=TRUE, sep=",")
 
 PositiveReviewTrain <- df$Positive[0:120]
 NegativeReviewTrain <- df$Negative[0:120]
-PositiveReviewTest <- df$Positive[120:143]
-NegativeReviewTest <- df$Negative[120:143]
+PositiveReviewTest <- df$Positive[121:143]
+NegativeReviewTest <- df$Negative[121:143]
 
 # 120 for training; 23 for testing
 ReviewsTrain <- c(PositiveReviewTrain, NegativeReviewTrain)
@@ -270,7 +270,7 @@ ReviewsMatrix <- as.matrix(ReviwesDTM)
 
 # SVM classifier (accuracy = 83.3%)
 svmClassifier <- svm(ReviewsMatrix[1:240,], as.factor(sentimentAll[1:240]))
-svmPredicted <- predict(svmClassifier, ReviewsMatrix[241:288,])
+svmPredicted <- predict(svmClassifier, ReviewsMatrix[241:286,])
 table(svmPredicted, sentimentTest)
 confusionMatrix(as.factor(svmPredicted), as.factor(sentimentTest))
 
